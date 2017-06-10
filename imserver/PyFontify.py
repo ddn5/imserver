@@ -113,7 +113,7 @@ def fontify(pytext, searchfrom = 0, searchto = None):
         c = match[0]
         if c not in "#'\"":
             # Must have matched a keyword.
-            if start <> searchfrom:
+            if start != searchfrom:
                 # there's still a redundant char before and after it, strip!
                 match = match[1:-1]
                 start = start + 1
