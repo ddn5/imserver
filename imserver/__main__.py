@@ -1,3 +1,4 @@
-from imserver import *
+from imserver.imserver import main, bottle
 
-main(*bottle.sys.argv)
+if __name__ == '__main__':
+    main(*bottle.sys.argv)

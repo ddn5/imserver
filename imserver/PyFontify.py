@@ -76,7 +76,7 @@ tripleQuotePat = replace(pat, "q", "'") + "|" + replace(pat, 'q', '"')
 # a keyword pattern.
 nonKeyPat = r"(^|[^a-zA-Z0-9_.\"'])"
 
-keyPat = nonKeyPat + "(" + string.join(keyword.kwlist, "|") + ")" + nonKeyPat
+keyPat = nonKeyPat + "(" + "|".join(keyword.kwlist) + ")" + nonKeyPat
 
 matchPat = commentPat + "|" + keyPat + "|" + tripleQuotePat + "|" + quotePat
 matchRE = re.compile(matchPat)
