@@ -7,6 +7,6 @@ setup(name = "imserver",
     author_email = "bboy@qq.com",
     url = "http://10.24.36.130:8100/imserver/",
     packages = ['imserver'],
-    install_requires = ['gevent','bottle','markdown'],
+    install_requires = ['paste','bottle','markdown'],
     # scripts = ["imserv"],
 )
