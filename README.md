@@ -7,7 +7,7 @@ pip install https://github.com/ddn5/imserver.git
 ## Install_depands
  - [bottle]()
  - [markdown]()
- - [gevent]()
+ - [paste]()
 
 ## Third-party modules
  - PyFontify (from pyqt pkg)
