@@ -9,7 +9,7 @@ app = bottle.Bottle()
 template = '''<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
 <html><title>Directory listing for {{path}}</title><style>
 img{width:100%;}a{font-family: serif;}
-div {display: inline-block;width:400px;padding:0 -8 px;border:1px gray solid}
+div {display: inline-block;width:475px;padding:0 -8 px;border:1px gray solid}
 h3{    position: fixed;    top: -4px;}
 h3 a {
     text-decoration: initial;
