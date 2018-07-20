@@ -1,7 +1,3 @@
-from gevent import monkey
-
-monkey.patch_all()
-
 import bottle
 from os.path import *
 import markdown
@@ -13,7 +9,7 @@ app = bottle.Bottle()
 template = '''<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
 <html><title>Directory listing for {{path}}</title><style>
 img{width:100%;}a{font-family: serif;}
-div {display: inline-block;width:550px;padding:0 -8 px;border:1px gray solid}
+div {display: inline-block;width:400px;padding:0 -8 px;border:1px gray solid}
 h3{    position: fixed;    top: -4px;}
 h3 a {
     text-decoration: initial;
@@ -44,7 +40,8 @@ h3 a:nth-child(3n+1) {
 % end
 </h3>
 <br><br>
-% for f in list:
+% I = 0
+% for f in sorted(list,reverse=True):
 % n,ext = splitext(f)
 % bn = basename(n)
 % fp = join(path,f)
@@ -53,9 +50,14 @@ h3 a:nth-child(3n+1) {
 % continue
 % end
 % if ext and ext.lower() in '.png,.bmp,.jpg,.jpeg,.bmp':
-<div>[IMG] <a href="/{{fp}}">{{bn}}</a><img src="/{{fp}}"></div>
+<div>[IMG]<a href="/{{fp}}">{{bn}}</a>
+% I += 1
+% if I<200:
+<img src="/{{fp}}">
+% end
+</div>
 % else:
-<pre>[FILE]<a href="/{{fp}}">{{bn}}{{ext}}</a></pre>
+<pre><a href="/{{fp}}">{{bn}}{{ext}}</a></pre>
 % end
 % end
 </body>
@@ -78,7 +80,7 @@ def image_serv(path=''):
 
 
 def main(_, port=8100):
-    bottle.run(app=app, server='gevent', host='0.0.0.0', port=port)
+    bottle.run(app=app, server='paste', host='0.0.0.0', port=port)
 
 
 if __name__ == '__main__':
